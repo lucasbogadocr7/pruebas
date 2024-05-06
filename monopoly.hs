@@ -76,6 +76,23 @@ cobrarAlqui propiedad jugador
 esPropiedadBarata :: Prop -> Bool
 esPropiedadBarata propiedad = precioProp propiedad < 150
 
+--si suponemos que no se cobra en cada turno (sino general)
+cobrarAl :: Acc
+cobrarAl jugador =  jugador {dinero = (+(sumarGanancia.propiedades $ jugador)).dinero $ jugador }
+
+--funcion para obtener props con P.M
+--props :: Participante -> [Prop]
+--props (UnParticipante _ _ _ _ listap) = listap 
+
+alquiler :: Prop -> Int
+alquiler propiedad
+    | esPropiedadBarata propiedad = 10
+    | otherwise = 20
+
+sumarGanancia :: [Prop] -> Int
+sumarGanancia lista = sum.(map alquiler)$ lista
+
+
 pagarAccionistas :: String -> Acc
 pagarAccionistas "Accionista" jugador = jugador {dinero = modificarDinero (+200).dinero $ jugador} 
 pagarAccionistas _ jugador = jugador {dinero = (subtract 100).dinero $ jugador}
