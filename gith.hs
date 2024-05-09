@@ -8,3 +8,7 @@ promedios listagorda = map promedio listagorda
 
 promedio :: Fractional a => [a] -> a
 promedio lista = (sum lista) / fromIntegral (length lista)
+
+doblesLista :: Num a => [a] -> [a]
+doblesLista lista = map (\numero -> numero * 2) lista
+
