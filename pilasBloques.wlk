@@ -51,13 +51,13 @@ object capy inherits Personaje {
     }
 
     method reciclar() {
-        latas -= 5
+        latas = 0.max(latas-1)
     }
 
-    method latas() = 0.max(latas)
+    method latas() = latas
 
-    method cantidadPar() = latas % 2 == 0
+    method cantidadPar() = latas.even()
 
-    method tieneTodoListo() = capy.cantidadPar()
+    method tieneTodoListo() = cantidadPar()
 
 }
