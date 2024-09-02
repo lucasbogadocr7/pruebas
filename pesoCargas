@@ -1,0 +1,54 @@
+//PDEP CARGAS
+object verdurín {
+var cajones = 10
+const pesocajon = 50
+var kilometraje = 700000
+
+method transportarcajones(cantidad) {
+cajones = cantidad
+}
+
+method pesoCarga() = pesocajon*cajones
+
+method velocidadMax () = 80 - self.pesoCarga().div(500)
+
+method recorrer(unosKilometros, unaVelocidadMaxima){
+kilometraje += unosKilometros} // auqnue el segundo parametro no lo necesitemos para nada, debemos dejarlo para que sea polimrofico en la ultima funcion
+}
+
+
+object scannion {
+const capacidad = 5000
+var densidad = 1 // creamos esta varaible para poder isar polimorfismo en el medtido pesoCarga
+
+method velocidad()= 140 //defino directamente el valor de la velocidad (xq es constante)
+method densidad(unaDensidad){
+densidad = unaDensidad
+}
+method pesoCarga() = densidad*capacidad
+method recorrer(unosKilometros, unaVelocidadMaxima){
+//metodo vacio
+}
+}
+
+object cerealitas {
+var nivelDeterioro = 0
+var property pesoCarga = 0 // necesiro un setter para setear el peso segun los viajes
+
+method velocidadMax(num) {
+if(nivelDeterioro < num) {
+return 40
+} else {return 60 - nivelDeterioro}
+method recorrer(unosKilometros, unaVelocidadMaxima) {
+nivelDeterioro += (unaVelocidadMaxima -45).max(0)
+}
+}
+
+object rutaAtlantica {
+method dejarPasar(unCamion) {
+pdepCargas.cobrar(self.tarifa(unCamion))
+unCamion.recorrer(400, 75)
+}
+method tarifa(unCamion) = 7000 + unCamion.pesoCarga().div(1000)*100
+
+}
